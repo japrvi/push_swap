@@ -6,14 +6,13 @@
 /*   By: jpozuelo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/06 15:16:59 by jpozuelo          #+#    #+#             */
-/*   Updated: 2021/12/06 18:43:05 by jpozuelo         ###   ########.fr       */
+/*   Updated: 2021/12/09 14:20:28 by jpozuelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static int	is_sign_number(char c);
-static int	is_space(char c);
+static int	is_sign(char c);
 
 static int isNumber(char c)
 {
@@ -24,8 +23,10 @@ static int	is_sign(char c)
 {
 	if (c == '-')
 		return (-1);
-	else
+	else if (c == '+')
 		return (1);
+	else
+		return (0);
 }
 
 int		ft_check_format(char *cadena)
@@ -54,5 +55,21 @@ int	ft_atoi_c(char *cadena, int *i)
 	register int	j;
 
 	j = *i;
-
+	res = 0;
+	if (is_sign(cadena[j]))
+		sign = is_sign(cadena[j++]);
+	while (is_number(cadena[j]) && cadena[j])
+	{
+		res = res * 10 + (cadena[j++] - '0');
+		if (sign == -1)
+		{
+		} 
+	}
+	if (cadena[j] == ' ' || !cadena[j])
+	{
+		*i = j;
+		return (res);
+	}
+	else
+		perror ("Hay un error en el formato del numero");
 }
