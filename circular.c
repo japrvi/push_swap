@@ -6,7 +6,7 @@
 /*   By: jpozuelo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/10 16:58:25 by jpozuelo          #+#    #+#             */
-/*   Updated: 2021/12/10 19:48:31 by jpozuelo         ###   ########.fr       */
+/*   Updated: 2021/12/11 18:28:45 by jpozuelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,3 +52,18 @@ void	clear(t_circular *list)
 	free(list);
 	list = NULL;
 }
+
+t_node_s	*pop(t_circular *list)
+{
+	t_node_s	*next;
+	t_node_s	*previous;
+	t_node_s	*first;
+
+	first = list->first;
+	next = first->next;
+	previous = first->previous;
+	next->previous = previous;
+	previous->next = next;
+	list->first = next;
+	return (first);
+ }
