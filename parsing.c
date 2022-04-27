@@ -6,70 +6,32 @@
 /*   By: jpozuelo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/06 15:16:59 by jpozuelo          #+#    #+#             */
-/*   Updated: 2021/12/09 14:20:28 by jpozuelo         ###   ########.fr       */
+/*   Updated: 2021/12/15 15:37:13 by jpozuelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static int	is_sign(char c);
-
-static int isNumber(char c)
+int		isNumber(char c)
 {
 	return (c >= '0' && c <= '9');
 }
 
-static int	is_sign(char c)
+int		ft_atoi_m(char *s)
 {
-	if (c == '-')
-		return (-1);
-	else if (c == '+')
-		return (1);
-	else
-		return (0);
-}
-
-int		ft_check_format(char *cadena)
-{
-	static char	*dup;
-	static int	i = 0;
-	int			res;
-
-	if (cadena)
-	{
-		dup = ft_strdup(cadena);
-		i = 0;
-	}
-	while (dup[i] == ' ')
-	{
-		i++;
-	}
-	res = ft_atoi_c(dup + i, &i);
-	return (res);
-}
-
-int	ft_atoi_c(char *cadena, int *i)
-{
-	unsigned int	res;
+	long int		res;
 	int				sign;
-	register int	j;
+	unsigned int	i;
 
-	j = *i;
 	res = 0;
-	if (is_sign(cadena[j]))
-		sign = is_sign(cadena[j++]);
-	while (is_number(cadena[j]) && cadena[j])
+	i = 0;
+	sign = 
+	while (isNumber(s[i]))
 	{
-		res = res * 10 + (cadena[j++] - '0');
-		if (sign == -1)
-		{
-		} 
+		if (res >= INT16_MAX && sign == 0)
+			error_msg(1);
+		if (res <= 2147483648 && sign == 1)
+
 	}
-	if (cadena[j] == ' ' || !cadena[j])
-	{
-		*i = j;
-		return (res);
-	}
-	else
-		perror ("Hay un error en el formato del numero");
+	return ((int) (res * sign));
 }

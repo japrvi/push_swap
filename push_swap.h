@@ -6,7 +6,7 @@
 /*   By: jpozuelo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/03 18:41:08 by jpozuelo          #+#    #+#             */
-/*   Updated: 2021/12/13 16:15:16 by jpozuelo         ###   ########.fr       */
+/*   Updated: 2022/04/27 19:53:31 by jpozuelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,10 @@
 # define PUSH_SWAP_H
 # include <stdlib.h>
 # include <unistd.h>
+# include <limits.h>
 
 typedef struct	s_node_s
 {
-	char				order;
 	int					content;
 	struct s_node_s		*next;
 	struct s_node_s		*previous;
@@ -40,8 +40,9 @@ int			ft_atoi_c(char *cadena, int *i);
 void		add_first(t_circular *list, t_node_s *element);
 //void		add_last(t_circular *list, t_node_s *element);
 void		clear(t_circular *list);
+void		connection(t_node_s *node, t_node_s *next);
 t_node_s	*pop(t_circular *list);
-t_node_s	create_node(int content, char , char c);
+t_node_s	*create_node(int content);
 
 //Operaciones disponibles para ordenar.
 void		swap(t_circular *stack, char c);

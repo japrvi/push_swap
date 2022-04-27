@@ -6,29 +6,37 @@
 /*   By: jpozuelo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/10 16:58:25 by jpozuelo          #+#    #+#             */
-/*   Updated: 2021/12/11 18:28:45 by jpozuelo         ###   ########.fr       */
+/*   Updated: 2022/04/27 20:08:44 by jpozuelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
+void	connection(t_node_s *node, t_node_s *next)
+{
+	node->next = next;
+	next->previous = node;
+}
+
 void	add_first(t_circular *list, t_node_s *element)
 {
-	if (list)
+	if (list->last)
 	{
 		if (list->first)
-		{	
-			element->next = list->first;
-			element->previous = list->first->previous;
-			list->first->previous = element;
+		{
+			connection(element, list->first);
+			connection(list->last, element);
 			list->first = element;
 		}
 		else
 		{
 			list->first = element;
-			list->last = element;
+			connection(element, list->last);
+			connection(list->last, element);
 		}
 	}
+	else
+		list->last = element;
 }
 
 void	clear(t_circular *list)
@@ -53,6 +61,17 @@ void	clear(t_circular *list)
 	list = NULL;
 }
 
+t_node_s	*create_node(int content)
+{
+	t_node_s	*node;
+
+	node = (t_node_s *) malloc(sizeof(t_node_s));
+	node->content = content;
+	node->next = node;
+	node->previous = node;
+	return (node);
+}
+
 t_node_s	*pop(t_circular *list)
 {
 	t_node_s	*next;
@@ -66,4 +85,4 @@ t_node_s	*pop(t_circular *list)
 	previous->next = next;
 	list->first = next;
 	return (first);
- }
+}
