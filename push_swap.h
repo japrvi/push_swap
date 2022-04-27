@@ -6,7 +6,7 @@
 /*   By: jpozuelo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/03 18:41:08 by jpozuelo          #+#    #+#             */
-/*   Updated: 2022/04/27 19:53:31 by jpozuelo         ###   ########.fr       */
+/*   Updated: 2022/04/27 20:12:13 by jpozuelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,6 @@ typedef struct	s_node_s
 char		*ft_strdup(char *cadena);
 
 //Funciones para la entrada de datos
-int			ft_check_format(char *cadena);
-int			ft_atoi_c(char *cadena, int *i);
 
 //Operaciones para implementar la lista de nodos bidireccional y circular
 void		add_first(t_circular *list, t_node_s *element);
@@ -52,12 +50,5 @@ void		rotate(t_circular *stack, char c);
 void		rotate_r(t_circular *stack_a, t_circular *stack_b);
 void		reverse_rotate(t_circular *stack, char c);
 void		reverse_rotate_r(t_circular *stack_a, t_circular *stack_b);
-
-//Funciones que modifican el atributo order
-void		error_msg(char error);
-char		check_order_element(t_node_s *node, char c);
-char		check_order_list(t_circular *stack, char c);
-void		check_no_repeat();
-//Funciones para implementar el checker
 
 #endif
