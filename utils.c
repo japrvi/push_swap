@@ -6,27 +6,45 @@
 /*   By: jpozuelo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/06 15:02:59 by jpozuelo          #+#    #+#             */
-/*   Updated: 2021/12/09 14:52:22 by jpozuelo         ###   ########.fr       */
+/*   Updated: 2022/07/12 20:29:09 by jpozuelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-char	*ft_strdup(char *cadena)
+int		isNumber(char c)
 {
-	register int	i;
-	char			*res;
+	return (c >= '0' && c <= '9')
+}
 
-	i = 0;
-	while (cadena[i])
+int		p_atoi(char *str, )
+{
+	int	res;
+	int	aux;
+
+	res = 0;
+	while (*str != 0 && *str != ' ')
 	{
-		i++;
+		aux = res;
+		res = res * 10 + (*str - '0');
+		if (!isNumber(*str) || aux > res)
+			error_msg();
 	}
-	res = (char *) malloc(i);
-	while (i >= 0)
+	return (res);
+}
+
+int		n_atoi(char *str, t_monitor *mon)
+{
+	int	res;
+	int	aux;
+
+	res = 0;
+	while (*str != 0 && *str != ' ')
 	{
-		res[i] = cadena[i];
-		i--;
+		aux = res;
+		res = res * 10 - (*str - '0');
+		if (!isNumber(*str) || aux > res)
+			mon->error =  1;
 	}
 	return (res);
 }

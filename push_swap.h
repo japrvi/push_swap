@@ -6,7 +6,7 @@
 /*   By: jpozuelo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/03 18:41:08 by jpozuelo          #+#    #+#             */
-/*   Updated: 2022/07/12 18:54:22 by jpozuelo         ###   ########.fr       */
+/*   Updated: 2022/07/12 20:29:30 by jpozuelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,8 @@ int			p_atoi(char *str);
 int			n_atoi(char *str);
 
 //Funciones para la entrada de datos
+int			init(t_monitor *mon);
+int			parser(t_monitor *mon, int argc, char **);
 
 //Operaciones para implementar la lista de nodos bidireccional y circular
 void		add_first(t_circular *list, t_node_s *element);
