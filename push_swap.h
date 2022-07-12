@@ -6,7 +6,7 @@
 /*   By: jpozuelo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/03 18:41:08 by jpozuelo          #+#    #+#             */
-/*   Updated: 2022/04/27 20:12:13 by jpozuelo         ###   ########.fr       */
+/*   Updated: 2022/07/12 18:54:22 by jpozuelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 typedef struct	s_node_s
 {
 	int					content;
+	int					fixed;
 	struct s_node_s		*next;
 	struct s_node_s		*previous;
 } t_node_s;
@@ -29,8 +30,20 @@ typedef struct	s_node_s
 	t_node_s	*last;
 } t_circular;
 
+typedef struct s_monitor
+{
+	t_circular		stack_a;
+	t_circular		stack_b;
+	int				error;
+	int				*nlist;
+	unsigned int	*list;
+	unsigned int	amount;
+} t_monitor;
+
 //Utils
-char		*ft_strdup(char *cadena);
+int			isNumber(char c);
+int			p_atoi(char *str);
+int			n_atoi(char *str);
 
 //Funciones para la entrada de datos
 
@@ -38,6 +51,7 @@ char		*ft_strdup(char *cadena);
 void		add_first(t_circular *list, t_node_s *element);
 //void		add_last(t_circular *list, t_node_s *element);
 void		clear(t_circular *list);
+void		error_msg();
 void		connection(t_node_s *node, t_node_s *next);
 t_node_s	*pop(t_circular *list);
 t_node_s	*create_node(int content);

@@ -6,7 +6,7 @@
 /*   By: jpozuelo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/06 15:16:59 by jpozuelo          #+#    #+#             */
-/*   Updated: 2021/12/15 15:37:13 by jpozuelo         ###   ########.fr       */
+/*   Updated: 2022/07/12 18:42:44 by jpozuelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,21 +17,23 @@ int		isNumber(char c)
 	return (c >= '0' && c <= '9');
 }
 
-int		ft_atoi_m(char *s)
+int		p_atoi(char *str, )
 {
-	long int		res;
-	int				sign;
-	unsigned int	i;
+	int	res;
+	int	aux;
 
 	res = 0;
-	i = 0;
-	sign = 
-	while (isNumber(s[i]))
+	while (*str != 0 && *str != ' ')
 	{
-		if (res >= INT16_MAX && sign == 0)
-			error_msg(1);
-		if (res <= 2147483648 && sign == 1)
-
+		aux = res;
+		res = res * 10 + (*str - '0');
+		if (!isNumber(*str) || aux > res)
+			error_msg();
 	}
-	return ((int) (res * sign));
+	return (res);
+}
+
+int		n_atoi()
+{
+
 }

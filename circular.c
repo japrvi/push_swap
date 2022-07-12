@@ -6,7 +6,7 @@
 /*   By: jpozuelo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/10 16:58:25 by jpozuelo          #+#    #+#             */
-/*   Updated: 2022/04/27 20:08:44 by jpozuelo         ###   ########.fr       */
+/*   Updated: 2022/05/06 20:09:40 by jpozuelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,15 +74,24 @@ t_node_s	*create_node(int content)
 
 t_node_s	*pop(t_circular *list)
 {
-	t_node_s	*next;
-	t_node_s	*previous;
 	t_node_s	*first;
 
 	first = list->first;
-	next = first->next;
-	previous = first->previous;
-	next->previous = previous;
-	previous->next = next;
-	list->first = next;
+	if (first)
+	{
+		if (first->next = list->last)
+			list->first = NULL;
+		else
+		{
+			connection(first->next, list->last);
+			connection(list->last, first->next);
+			list->first = first->next;
+		}
+	}
+	else
+	{
+		first = list->last;
+		list->last = NULL;
+	}
 	return (first);
 }
