@@ -6,7 +6,7 @@
 /*   By: jpozuelo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/03 18:41:08 by jpozuelo          #+#    #+#             */
-/*   Updated: 2022/07/12 21:21:55 by jpozuelo         ###   ########.fr       */
+/*   Updated: 2022/07/13 20:57:03 by jpozuelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,11 @@ typedef struct	s_node_s
 
  typedef struct s_circular
 {
-	t_node_s	*first;
-	t_node_s	*last;
+	t_node_s		*first;
+	t_node_s		*last;
+	int				clean;
+	unsigned int	minum;
+	unsigned int	maxim;
 } t_circular;
 
 typedef struct s_monitor
@@ -49,6 +52,8 @@ int			n_atoi(char *str);
 int			init(t_monitor *mon, int argc, char **argv);
 void		parser(t_monitor *mon, char *line);
 
+//Funciones para limpiar
+
 //Operaciones para implementar la lista de nodos bidireccional y circular
 void		add_first(t_circular *list, t_node_s *element);
 //void		add_last(t_circular *list, t_node_s *element);
@@ -57,6 +62,7 @@ void		error_msg();
 void		connection(t_node_s *node, t_node_s *next);
 t_node_s	*pop(t_circular *list);
 t_node_s	*create_node(int content);
+t_node_s	*delete_node();
 
 //Operaciones disponibles para ordenar.
 void		swap(t_circular *stack, char c);
