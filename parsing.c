@@ -6,7 +6,7 @@
 /*   By: jpozuelo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/06 15:16:59 by jpozuelo          #+#    #+#             */
-/*   Updated: 2022/07/13 20:57:08 by jpozuelo         ###   ########.fr       */
+/*   Updated: 2022/07/25 20:53:14 by jpozuelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,8 @@ void	init(t_monitor *mon, int argc, char **argv)
 	char	*line;
 
 	i = 1;
-	mon->nlist = (int *) malloc(sizeof(int) * 1000);
+	mon->size = 1024;
+	mon->nlist = (int *) malloc(sizeof(int) * 1024);
 	while (i < argc)
 	{
 		line = argv[i++];
@@ -26,15 +27,16 @@ void	init(t_monitor *mon, int argc, char **argv)
 		if (mon->error == 1)
 			break;
 	}
-	return (mon->error);
 }
 
 void	parser(t_monitor *mon, char *line)
 {
 	char	c;
+	int		error;
 
 	c = *line;
-	while (c != 0 && mon->error == 1)
+	error = mon->error;
+	while (c != 0 && error == 1)
 	{
 		if (c == '-')
 		{
@@ -42,11 +44,12 @@ void	parser(t_monitor *mon, char *line)
 			if (isNumber(c))
 				n_atoi(line);
 			else
-				p_atoi(line);
+				error = 1;
 		}
 		else if (isNumber(c))
 			p_atoi(line);
 		else if (c == ' ')
 			line++;
 	}
+	mon->error = error;
 }

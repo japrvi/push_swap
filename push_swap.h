@@ -6,7 +6,7 @@
 /*   By: jpozuelo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/03 18:41:08 by jpozuelo          #+#    #+#             */
-/*   Updated: 2022/07/13 20:57:03 by jpozuelo         ###   ########.fr       */
+/*   Updated: 2022/07/25 20:53:15 by jpozuelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,15 +41,18 @@ typedef struct s_monitor
 	int				*nlist;
 	unsigned int	*list;
 	unsigned int	amount;
+	unsigned int	size;
 } t_monitor;
 
 //Utils
 int			isNumber(char c);
-int			p_atoi(char *str);
-int			n_atoi(char *str);
+void		p_atoi(char *str, t_monitor *mon);
+void		n_atoi(char *str, t_monitor *mon);
+void		resize(t_monitor *mon);
+void		fit(t_monitor *mon);
 
 //Funciones para la entrada de datos
-int			init(t_monitor *mon, int argc, char **argv);
+void		init(t_monitor *mon, int argc, char **argv);
 void		parser(t_monitor *mon, char *line);
 
 //Funciones para limpiar
